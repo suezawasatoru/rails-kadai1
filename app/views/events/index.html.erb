@@ -1,0 +1,50 @@
+<div class="container mt-5">
+  <h3>予定一覧</h3>
+<% if flash[:notice] %>
+   <p class="notice"><%= flash[:notice] %></p>
+ <% end %>
+ <p class="float-end me-3"><%= link_to "新規追加", :new_event, class:"btn btn-sm btn-primary" %></p>
+  <table class="table table-bordered">
+   <thead>
+     <tr>
+       <th class="text-center">id</th>
+       <th class="text-center">開始日</th>
+       <th class="text-center">終了日</th>
+       <th class="text-center">終日</th>
+       <th class="text-center">更新日時</th>
+       <th colspan="4"></th>
+       
+     </tr>
+   </thead>
+ 
+   <tbody>
+     <% @events.each do |event| %>
+       <tr>
+         <td class="text-center"><%= event.id %></td>
+         <td class="text-center"><%= event.title %></td>
+         <td class="text-center"><%= event.start_date %></td>
+         <td class="text-center"><%= event.end_date %></td>
+         <td class="text-center"><%= event.all_day ? '⚪︎' : ''%></td>
+         <td class="text-center"><%= event.updated_at.to_s(:datetime_jp) %></td>
+         <td class="text-center">
+         <%= link_to "詳細", event %>
+         </td>
+         <td class="text-center">
+           <%= link_to "編集", [:edit,event] %>
+         </td>
+         <td class="text-center">
+           <%= link_to "削除", event, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+         </td>
+       </tr>
+     <% end %>
+   </tbody>
+ </table>
+ <div class="d-flex align-items-center ">
+ <p class="fs-5 "><%= "予定合計#{event_count}件" %></p>
+ <p class="fs-6 ps-3"><%= time_today%></p>
+ </div>
+ 
+
+ </div>
+ 
+

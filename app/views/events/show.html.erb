@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <h3>イベント詳細</h3>
+ 
+ <table>
+   <tr>
+     <th class="text-center">タイトル</th>
+     <td class="text-center"><%= @event.title %></td>
+   </tr>
+   <tr>
+     <th class="text-center">開始日</th>
+     <td class="text-center"><%= @event.start_date%></td>
+   </tr>
+   <tr>
+     <th class="text-center">終了日</th>
+     <td class="text-center"><%= @event.end_date %></td>
+   </tr>
+   <tr>
+     <th class="text-center">終日</th>
+     <td class="text-center"><%= @event.all_day ? '⚪︎' : '' %></td>
+   </tr>
+   <tr>
+     <th class="text-center">スケジュールメモ</th>
+     <td class="text-center"><%= @event.schedule_memo %></td>
+   </tr>
+ </table>
+ 
+ <div class="d-flex">
+   <p><%= link_to "戻る", :events, class:"btn btn-sm btn-primary" %></p>
+   <p class="ps-1"><%= link_to "編集", [:edit_event], class:"btn btn-sm btn-primary" %></p>
+ </div>
+</div>
